@@ -1,16 +1,56 @@
-/* 余計な装飾なし：レイアウト最小限 */
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; }
-main { max-width: 980px; margin: 24px auto; padding: 0 12px; }
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
 
-.city-form { display: grid; gap: 12px; }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.header-container {
+  flex-shrink: 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+#city {
+  padding: 5px;
+}
+
+#search {
+  padding: 5px 10px;
+}
+
+/* 都市選択セクション */
+.city-selector {
+  margin: 20px 0;
+}
+
+.city-selector h2 {
+  font-size: 1.1em;
+  margin-bottom: 12px;
+  color: #333;
+}
 
 /* タイルグリッド：列数は14、モバイル時は7列 */
 .grid {
   display: grid;
   grid-template-columns: repeat(14, minmax(64px, 1fr));
   gap: 8px;
+  margin-bottom: 20px;
 }
 
 /* 行・列ユーティリティ */
@@ -24,8 +64,16 @@ main { max-width: 980px; margin: 24px auto; padding: 0 12px; }
 .c13{grid-column:13}.c14{grid-column:14}
 
 /* 入力とラベル（装飾最小） */
-.cell { position: relative; }
-.cell input[type="radio"] { position: absolute; opacity: 0; inset: 0; }
+.cell { 
+  position: relative; 
+}
+
+.cell input[type="radio"] { 
+  position: absolute; 
+  opacity: 0; 
+  inset: 0; 
+}
+
 .cell label {
   display: block;
   border: 1px solid #ccc;
@@ -35,24 +83,64 @@ main { max-width: 980px; margin: 24px auto; padding: 0 12px; }
   line-height: 1.2;
   text-align: center;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
+
 .cell input[type="radio"]:focus + label {
   outline: 2px solid #000;
   outline-offset: 2px;
 }
+
 .cell input[type="radio"]:checked + label {
   border-color: #000;
+  background-color: #f0f0f0;
 }
 
-/* 補助セル（スペーサ）を非表示にする場合に使う */
-.c8-dup { display: none; }
-
-/* ボタン・注釈（最小限） */
-.actions { margin-top: 8px; }
-button { padding: 8px 12px; font-size: 14px; }
-.small { font-size: 12px; color: #333; }
+.cell label:hover {
+  background-color: #f8f8f8;
+}
 
 /* モバイル：列数を減らして押しやすく */
 @media (max-width: 720px) {
-  .grid { grid-template-columns: repeat(7, minmax(72px, 1fr)); }
+  .grid { 
+    grid-template-columns: repeat(7, minmax(72px, 1fr)); 
+  }
 }
+
+#result {
+  margin-top: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.heatmap-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  margin: 20px 0;
+  max-width: 800px;
+}
+
+.heatmap-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* .heatmap-cell:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+} */
