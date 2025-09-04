@@ -188,7 +188,9 @@ $(function(){
                                         const ajiCondition = currentMode === `himono`
                                         ?evaluateAjiDryingConditions(currentMonth, temp, humidity, windSpeed, precipitationProbability)
                                         : evaluateclothesDryingConditions(currentMonth, temp, humidity, windSpeed, precipitationProbability, i);
-                                        console.log(`デバッグ: レコメンデーション = ${ajiCondition.recommendation}`);
+                                        console.log(`デバッグ: スコア = ${ajiCondition.totalScore}, レコメンデーション = ${ajiCondition.recommendation}`);
+                                        const bgColor = getBackgroundColor(ajiCondition.totalScore, currentMode);
+                                        console.log(`デバッグ: 背景色 = ${bgColor}`);
 
                                         if(currentMode === 'sentaku' && (i <= 6 || i >= 20)){
                                             console.log(`時間${i}時 - 気温:${temp}℃, 湿度:${humidity}%, 風速:${windSpeed}m/s, 降水確率:${precipitationProbability}%, スコア:${ajiCondition.totalScore}`);
@@ -209,7 +211,7 @@ $(function(){
 
                                         $(`#result${i + 1}`).html(`
                                             <div class="hour-segment ${isAM ? 'am' : 'pm'}" style="
-                                            background: ${getBackgroundColor(ajiCondition.totalScore, currentMode)};
+                                            background: ${bgColor};
                                             left: ${x - 25}px;
                                             top: ${y - 25}px;
                                             " title="${displayHour}時: ${ajiCondition.emoji} ${ajiCondition.recommendation}">
