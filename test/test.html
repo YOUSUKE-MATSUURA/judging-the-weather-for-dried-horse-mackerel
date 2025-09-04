@@ -15,24 +15,28 @@
     <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ここから下に、ブラウザに表示したい内容を記述する ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
     <header>
       <div class="header-container">
-        <h1>アジの天日干し日判定</h1>
+        <h1>アジと洗濯干し判定</h1>
       </div>
 
     </header>
-
-    <!-- 都市選択グリッド -->
+    <div id="city-modal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>お住まいの地域を選択してください</h2>
+        </div>
+        
+        
         <!-- 都市選択グリッド -->
         <section class="city-selector">
-          <h2>または地図から都市を選択</h2>
           <!-- タイルマップ：位置は大まかな地理関係に合わせた行列指定 -->
           <div class="grid" role="radiogroup">
-    
+            
             <!-- r1: 北海道 -->
             <div class="cell r1 c7">
               <input id="hokkaido" type="radio" name="city" value="Sapporo" />
               <label for="hokkaido">北海道 / Sapporo</label>
             </div>
-    
+            
             <!-- r2: 東北（青森・岩手・宮城・秋田・山形・福島） -->
             <div class="cell r2 c4">
               <input id="yamagata" type="radio" name="city" value="Yamagata" />
@@ -58,7 +62,7 @@
               <input id="fukushima" type="radio" name="city" value="Fukushima" />
               <label for="fukushima">福島 / Fukushima</label>
             </div>
-    
+            
             <!-- r3: 関東（茨城・栃木・群馬・埼玉・千葉・東京・神奈川） -->
             <div class="cell r3 c3">
               <input id="gunma" type="radio" name="city" value="Maebashi" />
@@ -88,7 +92,7 @@
               <input id="ibaraki" type="radio" name="city" value="Mito" />
               <label for="ibaraki">茨城 / Mito</label>
             </div>
-    
+            
             <!-- r4/r5: 中部（新潟・富山・石川・福井・山梨・長野・岐阜・静岡・愛知） -->
             <!-- r4: 北陸＋新潟 -->
             <div class="cell r4 c4">
@@ -128,7 +132,7 @@
               <input id="shizuoka" type="radio" name="city" value="Shizuoka" />
               <label for="shizuoka">静岡 / Shizuoka</label>
             </div>
-    
+            
             <!-- r6/r7: 近畿（三重・滋賀・京都・大阪・兵庫・奈良・和歌山） -->
             <div class="cell r6 c5">
               <input id="mie" type="radio" name="city" value="Tsu" />
@@ -158,7 +162,7 @@
               <input id="wakayama" type="radio" name="city" value="Wakayama" />
               <label for="wakayama">和歌山 / Wakayama</label>
             </div>
-    
+            
             <!-- r8: 中国（鳥取・島根・岡山・広島・山口） -->
             <div class="cell r8 c5">
               <input id="shimane" type="radio" name="city" value="Matsue" />
@@ -180,7 +184,7 @@
               <input id="yamaguchi" type="radio" name="city" value="Yamaguchi" />
               <label for="yamaguchi">山口 / Yamaguchi</label>
             </div>
-    
+            
             <!-- r9: 四国（徳島・香川・愛媛・高知）-->
             <div class="cell r9 c6">
               <input id="ehime" type="radio" name="city" value="Matsuyama" />
@@ -198,7 +202,7 @@
               <input id="kochi" type="radio" name="city" value="Kochi" />
               <label for="kochi">高知 / Kochi</label>
             </div>
-    
+            
             <!-- r10/r11: 九州（福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島）-->
             <div class="cell r10 c5">
               <input id="nagasaki" type="radio" name="city" value="Nagasaki" />
@@ -228,15 +232,17 @@
               <input id="miyazaki" type="radio" name="city" value="Miyazaki" />
               <label for="miyazaki">宮崎 / Miyazaki</label>
             </div>
-    
+            
             <!-- r12: 沖縄 -->
             <div class="cell r12 c3">
               <input id="okinawa" type="radio" name="city" value="Naha" />
               <label for="okinawa">沖縄 / Naha</label>
             </div>
-    
+            
           </div>
         </section>
+      </div>
+    </div>
         <div class="total-result-container">
         <div id="date-inputs" style="display: none;">
             <input id="total-result1" type="text" readonly></input>
@@ -249,35 +255,51 @@
         </div>
         </div>
 
-    <div id="result-border"></div>
-    
-    <!-- <div id="result"></div> -->
-     <div class="heatmap-container">
-    <div id="result1"></div>
-    <div id="result2"></div>
-    <div id="result3"></div>
-    <div id="result4"></div>
-    <div id="result5"></div>
-    <div id="result6"></div>
-    <div id="result7"></div>
-    <div id="result8"></div>
-    <div id="result9"></div>
-    <div id="result10"></div>
-    <div id="result11"></div>
-    <div id="result12"></div>
-    <div id="result13"></div>
-    <div id="result14"></div>
-    <div id="result15"></div>
-    <div id="result16"></div>
-    <div id="result17"></div>
-    <div id="result18"></div>
-    <div id="result19"></div>
-    <div id="result20"></div>
-    <div id="result21"></div>
-    <div id="result22"></div>
-    <div id="result23"></div>
-    <div id="result24"></div>
+<div id="main-container">
+  <div id="button-container">
+    <div class="himono">
+      <img src="../images/himono.png" alt="ひもの" id="button-himono">
     </div>
+    <div class="sentaku">
+      <img src="../images/sentaku.png" alt="せんたく" id="button-sentaku">
+    </div>
+  </div>
+  
+  <!-- <div id="result"></div> -->
+   <div class="dual-clock-container" style="display: none;">
+    <div class="clock-circle am-circle">
+      <div class="clock-center am-center">午前</div>
+      <div id="result1"></div>
+      <div id="result2"></div>
+      <div id="result3"></div>
+      <div id="result4"></div>
+      <div id="result5"></div>
+      <div id="result6"></div>
+      <div id="result7"></div>
+      <div id="result8"></div>
+      <div id="result9"></div>
+      <div id="result10"></div>
+      <div id="result11"></div>
+      <div id="result12"></div>
+    </div>
+
+    <div class="clock-circle pm-circle">
+      <div class="clock-center pm-center">午後</div>
+      <div id="result13"></div>
+      <div id="result14"></div>
+      <div id="result15"></div>
+      <div id="result16"></div>
+      <div id="result17"></div>
+      <div id="result18"></div>
+      <div id="result19"></div>
+      <div id="result20"></div>
+      <div id="result21"></div>
+      <div id="result22"></div>
+      <div id="result23"></div>
+      <div id="result24"></div>
+    </div>
+  </div>
+</div>
     <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ここから上に、ブラウザに表示したい内容を記述する ↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
 
     <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 下の2行はHTMLとJavaScriptファイルを繋ぐ役割を果たしています ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
