@@ -161,13 +161,15 @@ $(function(){
                                     
                                     function getBackgroundColor(score, mode) {
                                         if (mode === 'sentaku') {
-                                            
+                                            // 洗濯干し用の色基準
                                             if (score >= 20) return '#1e40af';      
                                             if (score >= 16) return '#3b82f6';      
                                             if (score >= 12) return '#60a5fa';      
                                             if (score >= 8) return '#93c5fd';       
-                                            if (score >= 1) return '#dbeafe';      
-                                            
+                                            if (score >= 1) return '#dbeafe';       
+                                            return '#f1f5f9';                      
+                                        } else {
+                                            // アジ干し用の色基準
                                             if (score >= 13) return '#1e40af';      
                                             if (score >= 10) return '#3b82f6';      
                                             if (score >= 7) return '#60a5fa';       
